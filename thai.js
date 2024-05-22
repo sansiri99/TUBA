@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const now = new Date();
   timestampField.value = now.toLocaleString();
 
+  console.log('Timestamp set to:', timestampField.value);
+
   // Function to format date and time for the file name
   function getFormattedDateTime() {
     const year = now.getFullYear();
@@ -34,8 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const isThaiKitchen = pageTitle.includes('ครัวไทย');
   const kitchenType = isThaiKitchen ? 'ครัวไทย' : 'ครัวอิตาเลี่ยน';
 
+  console.log('Kitchen type:', kitchenType);
+
   // Filter stock items for the selected kitchen
   const filteredItems = stockItems.filter(item => item.kitchen === (isThaiKitchen ? 'ไทย' : 'อิตาเลี่ยน'));
+
+  console.log('Filtered items:', filteredItems);
 
   // Populate the table with stock items
   filteredItems.forEach((item, index) => {
@@ -55,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
     stockTableBody.appendChild(row);
   });
 
+  console.log('Table populated');
+
   // Form submission handler
   document.getElementById('stockForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -69,10 +77,14 @@ document.addEventListener('DOMContentLoaded', function() {
       else filledItems[index][name] = value || "";
     });
 
+    console.log('Filled items:', filledItems);
+
     // Filter out empty rows
     const filteredFilledItems = filledItems.filter(item => {
       return item.inventoryCount || item.numberToOrder || item.counting;
     });
+
+    console.log('Filtered filled items:', filteredFilledItems);
 
     // Populate the confirmation table with filled items
     confirmationTableBody.innerHTML = '';
@@ -90,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       confirmationTableBody.appendChild(row);
     });
+
+    console.log('Confirmation table populated');
 
     // Show the confirmation modal
     modalBackdrop.style.display = 'block';
@@ -120,6 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
       item.kitchen = filteredItems[index].kitchen;
     });
 
+    console.log('Data items prepared:', data.items);
+
     // Generate CSV content with header and timestamp
     const header = `${kitchenType}, ${now.toLocaleString()}\n`;
     const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
@@ -132,6 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
       `"${item.type}"`,
       `"${item.kitchen}"`
     ].join(',')).join('\n');
+
+    console.log('CSV content generated');
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const reader = new FileReader();
@@ -193,8 +211,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Navigate button handler
   navigateButton.addEventListener('click', function() {
-    if (confirm(`คุณแน่ใจหรือว่าต้องการไปยังหน้าการจัดการสต็อก - ครัว${isThaiKitchen ? 'อิตาเลี่ยน' : 'ไทย'}?`)) {
-      location.href = isThaiKitchen ? 'italian.html' : 'thai.html';
-    }
-  });
-});
+    if (confirm(`คุณแน่ใจหรือว่าต้องการไปยังหน้าการจัดการสต็อก - ครัว${isThaiKitchen ? 'อิตาเลี่ยน' : '
