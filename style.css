@@ -1,0 +1,156 @@
+/* style.css */
+
+/* Apply blue background color to the landing page */
+body.landing-page {
+    background-color: #87CEEB; /* Light blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2em;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+}
+
+.landing-button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.landing-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Styles for Thai and Italian pages */
+body:not(.landing-page) {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+.container {
+    flex: 1; /* Take up available space */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: flex;
+    flex-direction: column;
+}
+
+.kitchen-header {
+    text-align: center;
+    font-size: 1em;
+    color: black; /* Ensure the color is black */
+    margin: 0px 0; /* Add margin to separate from other elements */
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.table-container {
+    flex: 1; /* Take up available space */
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px); /* Adjust based on header and button sizes */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+    .container {
+        padding: 10px;
+        width: 100%; /* Ensure it still uses the full width on mobile */
+    }
+    table {
+        width: 100%;
+    }
+    th, td {
+        padding: 5px;
+        font-size: 14px;
+    }
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+/* Dynamic font scaling on scroll */
+body:not(.landing-page) .table-container {
+    transition: font-size 0.3s;
+}
+
+body:not(.landing-page) .table-container.scrolled {
+    font-size: 0.9em; /* Adjusted for a better balance between desktop and mobile */
+}
