@@ -1,10 +1,11 @@
 import { stockItems } from './stockItems.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded and parsed');
+
   const stockTableBody = document.getElementById('stockTableBody');
   const timestampField = document.getElementById('timestamp');
   const pageTitle = document.title;
-  const headerTitle = document.querySelector('.kitchen-header');
   const navigateButton = document.getElementById('navigateButton');
   const loadingMessage = document.getElementById('loadingMessage');
   const confirmationModal = document.getElementById('confirmationModal');
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Form submission handler
   document.getElementById('stockForm').addEventListener('submit', function(event) {
     event.preventDefault();
+    console.log('Form submitted');
 
     const formData = new FormData(this);
     const filledItems = [];
@@ -97,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Final submit button handler
   finalSubmitButton.addEventListener('click', function() {
     loadingSpinner.style.display = 'block'; // Show the loading spinner
+    console.log('Final submit clicked');
 
     const formData = new FormData(document.getElementById('stockForm'));
     const data = { items: [] };
