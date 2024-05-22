@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <td>${item.inventoryCount}</td>
         <td>${item.numberToOrder}</td>
         <td>${item.counting}</td>
-        
+        <td>${filteredItems[index].type}</td>
+        <td>${filteredItems[index].kitchen}</td>
       `;
       confirmationTableBody.appendChild(row);
     });
