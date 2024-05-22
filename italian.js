@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const confirmationTableBody = document.getElementById('confirmationTableBody');
   const finalSubmitButton = document.getElementById('finalSubmitButton');
   const backButton = document.getElementById('backButton');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  const loadingSpinner = document.getElementById('loadingSpinner');
 
   // Set current date and time
   const now = new Date();
@@ -88,11 +90,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Show the confirmation modal
+    modalBackdrop.style.display = 'block';
     confirmationModal.style.display = 'block';
   });
 
   // Final submit button handler
   finalSubmitButton.addEventListener('click', function() {
+    loadingSpinner.style.display = 'block'; // Show the loading spinner
+
     const formData = new FormData(document.getElementById('stockForm'));
     const data = { items: [] };
 
@@ -150,24 +155,28 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
           loadingMessage.style.display = 'none';
           document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
+          loadingSpinner.style.display = 'none'; // Hide the loading spinner
         }
       })
       .catch(error => {
         loadingMessage.style.display = 'none';
         console.error('Error:', error);
         document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
+        loadingSpinner.style.display = 'none'; // Hide the loading spinner
       });
     };
 
     reader.readAsBinaryString(blob);
 
     // Hide the confirmation modal
+    modalBackdrop.style.display = 'none';
     confirmationModal.style.display = 'none';
   });
 
   // Back button handler
   backButton.addEventListener('click', function() {
     // Hide the confirmation modal
+    modalBackdrop.style.display = 'none';
     confirmationModal.style.display = 'none';
   });
 
