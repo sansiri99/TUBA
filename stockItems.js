@@ -118,7 +118,7 @@ export const stockItems = [
     { name: 'หอมเจียว', fixedStock: '0.2 กก', unit: 'กก', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'ไทย' },
     { name: 'เหล้าจีน', fixedStock: '1 ขวด', unit: 'ขวด', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'ไทย' },
     { name: 'ข้าวสารพนักงาน', fixedStock: '', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'ไทย' },
-    { name: 'ไข่กุ้งส้ม123', fixedStock: '1 แพ็ค', unit: 'แพ็ค', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
+    { name: 'ไข่กุ้งส้ม', fixedStock: '1 แพ็ค', unit: 'แพ็ค', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ซาลามี่ ( เปปเปอร์โรนี )', fixedStock: '1 แท่ง', unit: 'แท่ง', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ซี่โครงหมู', fixedStock: '', unit: '', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ดีปลาหมึก', fixedStock: '1 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
