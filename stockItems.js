@@ -2,12 +2,12 @@
 
 
 export const stockItems = [
-    { name: 'กุ้ง 123 20-22 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
-    { name: 'กุ้ง 123 28-30 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
-    { name: 'กุ้123งเสือ 8 ตัว/กก', fixedStock: '2 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
-    { name: 'กุ้งแ123ห้ง', fixedStock: '1 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
-    { name: 'ไข่ไก่123เบอร์ 0', fixedStock: '5 แผง', unit: 'แผง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
-    { name: 'ไข่เค็123ม', fixedStock: '10 ฟอง', unit: 'ฟอง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'กุ้ง 20-22 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'กุ้ง 28-30 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'กุ้งเสือ 8 ตัว/กก', fixedStock: '2 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'กุ้งแห้ง', fixedStock: '1 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'ไข่ไก่เบอร์ 0', fixedStock: '5 แผง', unit: 'แผง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+    { name: 'ไข่เค็ม', fixedStock: '10 ฟอง', unit: 'ฟอง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'ไข่เป็ดเบอร์0', fixedStock: '30 ฟอง', unit: 'ฟอง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'ไข่เยียวม้า', fixedStock: '20 ฟอง', unit: 'ฟอง', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'คอหมู', fixedStock: '2 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
