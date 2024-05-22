@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const headerTitle = document.querySelector('.kitchen-header');
   const navigateButton = document.getElementById('navigateButton');
   const loadingMessage = document.getElementById('loadingMessage');
+  const confirmationModal = document.getElementById('confirmationModal');
+  const confirmationTableBody = document.getElementById('confirmationTableBody');
+  const finalSubmitButton = document.getElementById('finalSubmitButton');
+  const backButton = document.getElementById('backButton');
 
   // Set current date and time
   const now = new Date();
@@ -52,79 +56,119 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('stockForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Show loading message
-    loadingMessage.style.display = 'block';
+    const formData = new FormData(this);
+    const filledItems = [];
 
-    // Show confirmation dialog
-    if (confirm('คุณแน่ใจหรือว่าต้องการส่งข้อมูลนี้?')) {
-      const formData = new FormData(this);
-      const data = { items: [] };
-      formData.forEach((value, key) => {
-        const [name, index] = key.split('_');
-        if (!data.items[index]) data.items[index] = { [name]: value || "" };
-        else data.items[index][name] = value || "";
-      });
-      data.items.forEach((item, index) => {
-        item.name = filteredItems[index].name;
-        item.fixedStock = filteredItems[index].fixedStock;
-        item.inventoryCount = item.inventoryCount || "";
-        item.numberToOrder = item.numberToOrder || "";
-        item.counting = item.counting || "";
-        item.type = filteredItems[index].type;
-        item.kitchen = filteredItems[index].kitchen;
-      });
+    formData.forEach((value, key) => {
+      const [name, index] = key.split('_');
+      if (!filledItems[index]) filledItems[index] = { [name]: value || "" };
+      else filledItems[index][name] = value || "";
+    });
 
-      // Generate CSV content with header and timestamp
-      const header = `${kitchenType}, ${now.toLocaleString()}\n`;
-      const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
-      const csvContent = header + columnHeaders + data.items.map(item => [
-        `"${item.name}"`,
-        `"${item.fixedStock}"`,
-        `"${item.inventoryCount}"`,
-        `"${item.numberToOrder}"`,
-        `"${item.counting}"`,
-        `"${item.type}"`,
-        `"${item.kitchen}"`
-      ].join(',')).join('\n');
+    // Filter out empty rows
+    const filteredFilledItems = filledItems.filter(item => {
+      return item.inventoryCount || item.numberToOrder || item.counting;
+    });
 
-      const blob = new Blob([csvContent], { type: 'text/csv' });
-      const reader = new FileReader();
+    // Populate the confirmation table with filled items
+    confirmationTableBody.innerHTML = '';
+    filteredFilledItems.forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${filteredItems[index].name}</td>
+        <td>${filteredItems[index].fixedStock}</td>
+        <td>${item.inventoryCount}</td>
+        <td>${item.numberToOrder}</td>
+        <td>${item.counting}</td>
+        <td>${filteredItems[index].type}</td>
+        <td>${filteredItems[index].kitchen}</td>
+      `;
+      confirmationTableBody.appendChild(row);
+    });
 
-      reader.onload = function(event) {
-        const base64data = btoa(event.target.result);
-        const fileName = `${getFormattedDateTime()}_นับสต๊อกครัวอิตาเลี่ยน.csv`;
+    // Show the confirmation modal
+    confirmationModal.style.display = 'block';
+  });
 
-        // Create a form to submit the data
-        const uploadForm = new FormData();
-        uploadForm.append('file', base64data);
-        uploadForm.append('mimeType', 'text/csv');
-        uploadForm.append('filename', fileName);
+  // Final submit button handler
+  finalSubmitButton.addEventListener('click', function() {
+    const formData = new FormData(document.getElementById('stockForm'));
+    const data = { items: [] };
 
-        fetch('https://script.google.com/macros/s/AKfycbx_SZ29mQEXXRPfgAk_xTapQ5LRlOL3O9ZNrTb9A0q_XsuecLkC3M2ivelwncqg-DO-/exec', {
-          method: 'POST',
-          body: uploadForm
-        })
-        .then(response => response.json())
-        .then(result => {
-          if (result.url) {
-            // Redirect to the completion page with the file URL and form type as query parameters
-            window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=italian`;
-          } else {
-            loadingMessage.style.display = 'none';
-            document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
-          }
-        })
-        .catch(error => {
+    formData.forEach((value, key) => {
+      const [name, index] = key.split('_');
+      if (!data.items[index]) data.items[index] = { [name]: value || "" };
+      else data.items[index][name] = value || "";
+    });
+
+    data.items.forEach((item, index) => {
+      item.name = filteredItems[index].name;
+      item.fixedStock = filteredItems[index].fixedStock;
+      item.inventoryCount = item.inventoryCount || "";
+      item.numberToOrder = item.numberToOrder || "";
+      item.counting = item.counting || "";
+      item.type = filteredItems[index].type;
+      item.kitchen = filteredItems[index].kitchen;
+    });
+
+    // Generate CSV content with header and timestamp
+    const header = `${kitchenType}, ${now.toLocaleString()}\n`;
+    const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
+    const csvContent = header + columnHeaders + data.items.map(item => [
+      `"${item.name}"`,
+      `"${item.fixedStock}"`,
+      `"${item.inventoryCount}"`,
+      `"${item.numberToOrder}"`,
+      `"${item.counting}"`,
+      `"${item.type}"`,
+      `"${item.kitchen}"`
+    ].join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      const base64data = btoa(event.target.result);
+      const fileName = `${getFormattedDateTime()}_นับสต๊อกครัวอิตาเลี่ยน.csv`;
+
+      // Create a form to submit the data
+      const uploadForm = new FormData();
+      uploadForm.append('file', base64data);
+      uploadForm.append('mimeType', 'text/csv');
+      uploadForm.append('filename', fileName);
+
+      fetch('https://script.google.com/macros/s/AKfycbx_SZ29mQEXXRPfgAk_xTapQ5LRlOL3O9ZNrTb9A0q_XsuecLkC3M2ivelwncqg-DO-/exec', {
+        method: 'POST',
+        body: uploadForm
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.url) {
+          // Redirect to the completion page with the file URL and form type as query parameters
+          window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=italian`;
+        } else {
           loadingMessage.style.display = 'none';
-          console.error('Error:', error);
-          document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
-        });
-      };
+          document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
+        }
+      })
+      .catch(error => {
+        loadingMessage.style.display = 'none';
+        console.error('Error:', error);
+        document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
+      });
+    };
 
-      reader.readAsBinaryString(blob);
-    } else {
-      loadingMessage.style.display = 'none';
-    }
+    reader.readAsBinaryString(blob);
+
+    // Hide the confirmation modal
+    confirmationModal.style.display = 'none';
+  });
+
+  // Back button handler
+  backButton.addEventListener('click', function() {
+    // Hide the confirmation modal
+    confirmationModal.style.display = 'none';
   });
 
   // Reset button handler
