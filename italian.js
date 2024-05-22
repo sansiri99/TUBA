@@ -14,22 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalBackdrop = document.getElementById('modalBackdrop');
   const loadingSpinner = document.getElementById('loadingSpinner');
 
-  // Function to append the current timestamp to CSS and JS file URLs
-  function appendTimestamp() {
-    const timestamp = new Date().getTime();
-    const cssLink = document.querySelector('link[rel="stylesheet"]');
-    const jsScript = document.querySelector('script[type="module"]');
-    
-    if (cssLink) {
-      cssLink.href = `${cssLink.href.split('?')[0]}?v=${timestamp}`;
-    }
-    if (jsScript) {
-      jsScript.src = `${jsScript.src.split('?')[0]}?v=${timestamp}`;
-    }
-  }
-
-  appendTimestamp();
-
   // Set current date and time
   const now = new Date();
   timestampField.value = now.toLocaleString();
