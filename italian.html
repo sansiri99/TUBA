@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>การจัดการสต็อก - ครัวอิตาเลี่ยน</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <style>
         /* Add styles for the confirmation modal */
         #confirmationModal {
@@ -106,7 +106,7 @@
     <!-- Confirmation Modal -->
     <div id="modalBackdrop"></div>
     <div id="confirmationModal">
-        <h2>Confirmation</h2>
+        <h2>ยืนยัน</h2>
         <div style="overflow-y: auto; max-height: 60vh;">
             <table>
                 <thead>
@@ -124,8 +124,8 @@
                 <tbody id="confirmationTableBody"></tbody>
             </table>
         </div>
-        <button id="finalSubmitButton">Final Submit</button>
-        <button id="backButton">Back</button>
+        <button id="finalSubmitButton">ส่ง</button>
+        <button id="backButton">กลับ</button>
     </div>
 
     <!-- Loading Spinner -->
@@ -133,7 +133,7 @@
         <div class="spinner"></div>
     </div>
 
-    <script type="module" src="italian.js"></script>
+    <script type="module" src="italian.js?v=<?php echo time(); ?>"></script>
     <script>
         document.getElementById('homeButton').addEventListener('click', function() {
             window.location.href = 'index.html';
