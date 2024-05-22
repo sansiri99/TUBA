@@ -59,18 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirm('คุณแน่ใจหรือว่าต้องการส่งข้อมูลนี้?')) {
       const formData = new FormData(this);
       const data = { items: [] };
-
       formData.forEach((value, key) => {
         const [name, index] = key.split('_');
-        if (!data.items[index]) data.items[index] = {};
-        data.items[index][name] = value || "";
+        if (!data.items[index]) data.items[index] = { [name]: value || "" };
+        else data.items[index][name] = value || "";
       });
-
       data.items.forEach((item, index) => {
-        if (!filteredItems[index]) {
-          console.error(`No matching filtered item found for index ${index}`);
-          return;
-        }
         item.name = filteredItems[index].name;
         item.fixedStock = filteredItems[index].fixedStock;
         item.inventoryCount = item.inventoryCount || "";
@@ -79,9 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
         item.type = filteredItems[index].type;
         item.kitchen = filteredItems[index].kitchen;
       });
-
-      // Debugging: log the data.items array
-      console.log("Data items:", data.items);
 
       // Generate CSV content with header and timestamp
       const header = `${kitchenType}, ${now.toLocaleString()}\n`;
