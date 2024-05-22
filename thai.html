@@ -69,13 +69,13 @@
 <body>
     <div class="container">
         <h1 class="kitchen-header">การจัดการสต็อก - ครัวไทย</h1>
-        <form id="stockForm">
+        <form id="stockForm"?v=<?php echo time() ?>
             <div>
                 <label for="timestamp">เวลา:</label>
                 <input type="text" id="timestamp" name="timestamp" readonly>
             </div>
             <div class="table-container">
-                <table id="stockTable"?v=<?php scho time() ?>
+                <table id="stockTable"?v=<?php echo time() ?>
                     <thead>
                         <tr>
                             <th>#</th>
