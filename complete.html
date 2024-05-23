@@ -45,7 +45,7 @@
             const formType = urlParams.get('formType');
             const fileUrl = urlParams.get('fileUrl');
 
-            fetch('https://script.google.com/macros/s/AKfycbzipWLzLGgaFyK7FezkoIFl0sA4CbEMqNByjJCU_W9drPFE6sr3uVoxljJJG5oEnA7-/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
+            fetch('https://script.google.com/macros/s/AKfycbyJ26VHOIodhb84GYAGEIq0_XXS5glpGzCeL2eJjFAG7IRfBMf_4mYXjuNEwkET7J6k/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
                 method: 'GET',
                 mode: 'no-cors'
             }).then(response => {
@@ -55,7 +55,20 @@
             });
 
             // Set the form name
-            const formName = formType === 'italian' ? 'ฟอร์มการจัดการสต็อก - ครัวอิตาเลี่ยน' : 'ฟอร์มการจัดการสต็อก - ครัวไทย';
+            let formName = '';
+            switch (formType) {
+                case 'italian':
+                    formName = 'ฟอร์มการจัดการสต็อก - ครัวอิตาเลี่ยน';
+                    break;
+                case 'thai':
+                    formName = 'ฟอร์มการจัดการสต็อก - ครัวไทย';
+                    break;
+                case 'bar':
+                    formName = 'ฟอร์มการจัดการสต็อก - บาร์';
+                    break;
+                default:
+                    formName = 'ฟอร์มการจัดการสต็อก';
+            }
             document.getElementById('formName').textContent = formName;
 
             // Get current date and time
