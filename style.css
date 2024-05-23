@@ -1,4 +1,68 @@
-/* Existing styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light background color for better contrast */
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: white; /* Background color for container */
+    padding: 40px; /* Padding inside the container */
+    box-sizing: border-box;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.form-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.timestamp {
+    font-size: 20px;
+    color: #555;
+    justify-content: left ;
+    align-items: left ;
+    
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Existing styles for other pages */
 body.landing-page {
     background-color: #87CEEB; /* Light blue */
     display: flex;
@@ -7,12 +71,6 @@ body.landing-page {
     justify-content: center;
     height: 100vh;
     margin: 0;
-}
-
-h1 {
-    font-size: 2em;
-    color: white;
-    margin-bottom: 20px;
 }
 
 .button-container {
@@ -36,24 +94,12 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Styles for other pages */
 body:not(.landing-page) {
-    font-family: Arial, sans-serif;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
     display: flex;
     flex-direction: column;
     height: 100vh; /* Full viewport height */
-}
-
-.container {
-    flex: 1; /* Take up available space */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    display: flex;
-    flex-direction: column;
 }
 
 .kitchen-header {
@@ -120,7 +166,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #eb5252;
 }
 
 @media (max-width: 600px) {
@@ -221,33 +267,4 @@ body:not(.landing-page) .table-container.scrolled {
 
 .bold-text {
     font-weight: bold;
-}
-
-.timestamp {
-    font-size: 20px;
-    color: #555;
-}
-
-.form-name {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-p {
-    font-size: 18px;
-}
-
-.button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.button:hover {
-    background-color: #45a049;
 }
