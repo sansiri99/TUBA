@@ -5,69 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>การจัดการสต็อก - บาร์</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Add styles for the confirmation modal */
-        #confirmationModal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        #confirmationModal table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        #confirmationModal table th, #confirmationModal table td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-        #confirmationModal button {
-            margin-top: 10px;
-        }
-        /* Add a backdrop for the modal */
-        #modalBackdrop {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-        /* Add styles for the loading spinner */
-        #loadingSpinner {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1001;
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-top-color: #09f;
-            animation: spin 1s infinite linear;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .bold-text {
-        font-weight: bold;
-    }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -119,7 +56,6 @@
                         <th>นับสินค้าคงคลัง</th>
                         <th>จำนวนที่ต้องการสั่งซื้อ</th>
                         <th>จำนวนนับ</th>
-                        
                     </tr>
                 </thead>
                 <tbody id="confirmationTableBody"></tbody>
