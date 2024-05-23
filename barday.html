@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การจัดการสต็อก - บาร์ รายวัน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="kitchen-header">การจัดการสต็อก - บาร์ รายวัน</h1>
+        <form id="stockForm">
+            <div>
+                <label for="timestamp">เวลา:</label>
+                <input type="text" id="timestamp" name="timestamp" readonly>
+            </div>
+            <div class="table-container">
+                <table id="stockTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ชื่อ</th>
+                            <th>สต็อกที่กำหนด</th>
+                            <th>นับสินค้าคงคลัง</th>
+                            <th>จำนวนที่ต้องการสั่งซื้อ</th>
+                            <th>จำนวนนับ</th>
+                            <th>ประเภท</th>
+                            <th>ครัว</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="button-container">
+                <button type="submit">ส่งข้อมูล</button>
+                <button type="button" id="resetButton">รีเซ็ต</button>
+                <button type="button" id="navigateButton">ไปหน้าหลัก</button>
+            </div>
+        </form>
+        <div id="loadingMessage" style="display: none;">กรุณารอสักครู่ กำลังประมวลผล...</div>
+        <div id="result"></div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="modalBackdrop"></div>
+    <div id="confirmationModal">
+        <h2>Confirmation</h2>
+        <div style="overflow-y: auto; max-height: 60vh;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ชื่อ</th>
+                        <th>สต็อกที่กำหนด</th>
+                        <th>นับสินค้าคงคลัง</th>
+                        <th>จำนวนที่ต้องการสั่งซื้อ</th>
+                        <th>จำนวนนับ</th>
+                    </tr>
+                </thead>
+                <tbody id="confirmationTableBody"></tbody>
+            </table>
+        </div>
+        <button id="finalSubmitButton">Final Submit</button>
+        <button id="backButton">Back</button>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script type="module" src="barday.js"></script>
+    <script>
+        document.getElementById('navigateButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
