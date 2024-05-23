@@ -62,12 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!filledItems[index]) filledItems[index] = { [name]: value || "" };
       else filledItems[index][name] = value || "";
     });
-
+  
     // Filter out empty rows
     const filteredFilledItems = filledItems.filter(item => {
       return item.inventoryCount || item.numberToOrder || item.counting;
     });
-
+  
     // Populate the confirmation table with filled items
     confirmationTableBody.innerHTML = '';
     filteredFilledItems.forEach((item, index) => {
@@ -79,39 +79,43 @@ document.addEventListener('DOMContentLoaded', function() {
         <td>${item.inventoryCount}</td>
         <td>${item.numberToOrder}</td>
         <td>${item.counting}</td>
-        <td>${filteredItems[index].type}</td>
-        <td>${filteredItems[index].kitchen}</td>
+
       `;
       confirmationTableBody.appendChild(row);
     });
-
+  
     // Show the confirmation modal
     modalBackdrop.style.display = 'block';
     confirmationModal.style.display = 'block';
   });
-
+  
   // Final submit button handler
   finalSubmitButton.addEventListener('click', function() {
     loadingSpinner.style.display = 'block'; // Show the loading spinner
-
+  
     const formData = new FormData(document.getElementById('stockForm'));
     const data = { items: [] };
-
+  
     formData.forEach((value, key) => {
       const [name, index] = key.split('_');
       if (!data.items[index]) data.items[index] = { [name]: value || "" };
       else data.items[index][name] = value || "";
     });
-
-    // Filter out only the items shown in the confirmation box
-    const confirmedItems = data.items.filter((item, index) => {
-      return confirmationTableBody.querySelectorAll('tr')[index];
+  
+    data.items.forEach((item, index) => {
+      item.name = filteredItems[index].name;
+      item.fixedStock = filteredItems[index].fixedStock;
+      item.inventoryCount = item.inventoryCount || "";
+      item.numberToOrder = item.numberToOrder || "";
+      item.counting = item.counting || "";
+      item.type = filteredItems[index].type;
+      item.kitchen = filteredItems[index].kitchen;
     });
-
+  
     // Generate CSV content with header and timestamp
     const header = `บาร์, ${now.toLocaleString()}\n`;
     const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
-    const csvContent = header + columnHeaders + confirmedItems.map(item => [
+    const csvContent = header + columnHeaders + data.items.map(item => [
       `"${item.name}"`,
       `"${item.fixedStock}"`,
       `"${item.inventoryCount}"`,
@@ -120,20 +124,20 @@ document.addEventListener('DOMContentLoaded', function() {
       `"${item.type}"`,
       `"${item.kitchen}"`
     ].join(',')).join('\n');
-
+  
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const reader = new FileReader();
-
+  
     reader.onload = function(event) {
       const base64data = btoa(event.target.result);
       const fileName = `${getFormattedDateTime()}_นับสต๊อกบาร์.csv`;
-
+  
       // Create a form to submit the data
       const uploadForm = new FormData();
       uploadForm.append('file', base64data);
       uploadForm.append('mimeType', 'text/csv');
       uploadForm.append('filename', fileName);
-
+  
       fetch('https://script.google.com/macros/s/AKfycbx_SZ29mQEXXRPfgAk_xTapQ5LRlOL3O9ZNrTb9A0q_XsuecLkC3M2ivelwncqg-DO-/exec', {
         method: 'POST',
         body: uploadForm
@@ -156,21 +160,21 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingSpinner.style.display = 'none'; // Hide the loading spinner
       });
     };
-
+  
     reader.readAsBinaryString(blob);
-
+  
     // Hide the confirmation modal
     modalBackdrop.style.display = 'none';
     confirmationModal.style.display = 'none';
   });
-
+  
   // Back button handler
   backButton.addEventListener('click', function() {
     // Hide the confirmation modal
     modalBackdrop.style.display = 'none';
     confirmationModal.style.display = 'none';
   });
-
+  
   // Reset button handler
   document.getElementById('resetButton').addEventListener('click', function() {
     if (confirm('คุณแน่ใจหรือว่าต้องการรีเซ็ตแบบฟอร์ม?')) {
@@ -178,9 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
       timestampField.value = new Date().toLocaleString(); // Reset timestamp
     }
   });
-
+  
   // Navigate button handler
   navigateButton.addEventListener('click', function() {
     window.location.href = 'index.html';
   });
-});
+  });
+  
