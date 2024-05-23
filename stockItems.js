@@ -231,5 +231,7 @@ export const stockItems = [
     { name: 'เส้นแองเจิ้ลแฮร์', fixedStock: '20 ห่อ', unit: 'ห่อ', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
     { name: 'อัลมอนสไลด์', fixedStock: '0.3 กก', unit: 'กก', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
     { name: 'อารีกาโน', fixedStock: '1 กป', unit: 'กป', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
-    { name: 'อาโรมาต', fixedStock: '3 กป', unit: 'กป', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' }
+    { name: 'อาโรมาต', fixedStock: '3 กป', unit: 'กป', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'เบียร์ช้าง', fixedStock: '10 ลัง', unit: 'ลัง', type: 'เครื่องดื่ม', kitchen: 'บาร์' },
+    { name: 'ไวน์แดง', fixedStock: '5 ขวด', unit: 'ขวด', type: 'เครื่องดื่ม', kitchen: 'บาร์' }
 ];
