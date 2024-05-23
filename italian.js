@@ -80,9 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <td>${index + 1}</td>
         <td>${filteredItems[index].name}</td>
         <td>${filteredItems[index].fixedStock}</td>
-        <td>${item.inventoryCount}</td>
-        <td>${item.numberToOrder}</td>
-        <td>${item.counting}</td>
+        <td class="bold-text">${item.inventoryCount}</td>
+        <td class="bold-text">${item.numberToOrder}</td>
+        <td class="bold-text">${item.counting}</td>
 
       `;
       confirmationTableBody.appendChild(row);
