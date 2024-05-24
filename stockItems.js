@@ -280,9 +280,10 @@ export const stockItems = [
     { name: 'CHOCOLATELOER', fixedStock: '2 ลูก', unit: 'ลูก', type: 'บาร์', kitchen: 'บาร์วัน' },
     { name: 'สตรอเบอร์รี่แช่แข็ง', fixedStock: '1 ถุง', unit: 'ถุง', type: 'บาร์', kitchen: 'บาร์วัน' },
     { name: 'มิตรเบอร์รี่รวม', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
-    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' }
+    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
 
     // Bar Week
-
+    { name: 'มิตรเบอร์รี่รวม', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
+    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' }
     
 ];
