@@ -54,7 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
       `"${item.kitchen}"`
     ].join(',')).join('\n');
 
-    const blob = new Blob([csvContent], { type: 'text/csv' });
+    // Add BOM character
+    const bom = '\uFEFF';
+    const finalCsvContent = bom + csvContent;
+
+    const blob = new Blob([finalCsvContent], { type: 'text/csv;charset=utf-8;' });
     const reader = new FileReader();
 
     reader.onload = function(event) {
