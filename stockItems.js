@@ -283,7 +283,7 @@ export const stockItems = [
     { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
 
     // Bar Week
-    { name: 'มิตรเบอร์รี่รวม', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
-    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' }
+    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
+    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' }
     
 ];
