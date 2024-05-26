@@ -115,6 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById('navigateButton').addEventListener('click', function() {
-    window.location.href = 'index.html';
+    if (confirm('คุณแน่ใจหรือว่าต้องการไปหน้านับสต๊อก ครัวไทย?')) {
+      window.location.href = 'thai.html';
+    }
   });
+
+  document.getElementById('homeButton').addEventListener('click', function() {
+    if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
+      window.location.href = 'index.html';
+    }
+  });
+  
 });
