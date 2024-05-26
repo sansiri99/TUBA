@@ -112,9 +112,17 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('stockForm').reset();
       timestampField.value = getCurrentDateTime();
     }
-  });
-
-  document.getElementById('navigateButton').addEventListener('click', function() {
-    window.location.href = 'index.html';
-  });
+    });
+    document.getElementById('navigateButton').addEventListener('click', function() {
+      if (confirm('คุณแน่ใจหรือว่าต้องการไปหน้านับสต๊อก ครัวอิตาเลี่ยน?')) {
+        window.location.href = 'italian.html';
+      }
+    });
+  
+    document.getElementById('homeButton').addEventListener('click', function() {
+      if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
+        window.location.href = 'index.html';
+      }
+    });
+    
 });
