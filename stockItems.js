@@ -239,7 +239,7 @@ export const stockItems = [
     // Bar day
 
     { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
-    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' }
+    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
 
     // Bar Week
 
@@ -282,9 +282,6 @@ export const stockItems = [
     { name: 'CHOCOLATELOER', fixedStock: '2 ลูก', unit: 'ลูก', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'สตรอเบอร์รี่แช่แข็ง', fixedStock: '1 ถุง', unit: 'ถุง', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'มิตรเบอร์รี่รวม', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
-    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
-
-
-    
-    
+    { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' }
+  
 ];
