@@ -1,5 +1,5 @@
 // stockItems.js
-<script src="app.js?v=1.0.1"></script>
+<script src="stockitems.js?v=1.0.1"></script>
 <link rel="stylesheet" href="styles.css?v=1.0.1"></link>
 
 export const stockItems = [
