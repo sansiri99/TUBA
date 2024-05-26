@@ -1,4 +1,3 @@
-
 export const stockItems = [
 
     // Thai kitchen
@@ -239,6 +238,11 @@ export const stockItems = [
 
     // Bar day
 
+    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
+    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' }
+
+    // Bar Week
+
     { name: 'หลอดยาวพิเศษ', fixedStock: '9', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'หลอดดำ 8 มิล', fixedStock: '16', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'ขวดแก้วสกกั้ก', fixedStock: '3 ขวด', unit: 'ขวด', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
@@ -280,8 +284,7 @@ export const stockItems = [
     { name: 'มิตรเบอร์รี่รวม', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'ชาไทย', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
 
-    // Bar Week
-    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
-    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' }
+
+    
     
 ];
