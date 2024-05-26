@@ -243,7 +243,7 @@ export const stockItems = [
 
     // Bar Week
 
-    { name: '123หลอดยาวพิเศษ', fixedStock: '9', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
+    { name: 'หลอดยาวพิเศษ', fixedStock: '9', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'หลอดดำ 8 มิล', fixedStock: '16', unit: '', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'ขวดแก้วสกกั้ก', fixedStock: '3 ขวด', unit: 'ขวด', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
     { name: 'เชอรี่แดงติดก้าน', fixedStock: '24 ขวด', unit: 'ขวด', type: 'บาร์', kitchen: 'บาร์อาทิตย์' },
