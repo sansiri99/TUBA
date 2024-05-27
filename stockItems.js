@@ -238,8 +238,8 @@ export const stockItems = [
 
     // Bar day
 
-    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
-    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์วัน' },
+    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์รายวัน' },
+    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์รายวัน' },
 
     // Bar Week
 
