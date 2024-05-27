@@ -13,7 +13,7 @@ export function getUploadURL(kitchenType) {
 
   // Return the upload URL with the folder ID parameter
   const folderId = folderIds[kitchenType];
-  return `https://script.google.com/macros/s/AKfycbwde38wjYHrr3wW6kcY-H4rEVDxSZyrerchS4qmYgoHrHJtWT5RpuPKMSlFEQD0qTss/exec?folderId=${folderId}`;
+  return `https://script.google.com/macros/s/AKfycbxoDauxJBVP4qaD_SaW_2LfLVifBm0Ix2hjtldq-8AcQxVGRV4-1N6qOj0XPt9Z1k6R/exec?folderId=${folderId}`;
 }
 
 export function getCurrentDateTime() {
