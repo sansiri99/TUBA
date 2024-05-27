@@ -10,7 +10,7 @@ import {
   showModal, 
   hideModal, 
   handleFinalSubmit,
-  getUploadURL // Correctly import the function
+  getUploadURL // Ensure this is correctly imported
 } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   timestampField.value = getCurrentDateTime();
 
   const pageTitle = document.title;
-  const kitchenType = 'บาร์อาทิตย์';
+  const kitchenType = 'บาร์รายสัปดาห์';
 
   const filteredItems = stockItems.filter(item => item.kitchen === kitchenType);
   populateTable(filteredItems, 'stockTableBody', createTableRow);
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     populateConfirmationTable(filledItems, 'confirmationTableBody');
   });
 
-  handleFinalSubmit('finalSubmitButton', 'stockForm', filteredItems, function(items, formId) {
+  handleFinalSubmit('finalSubmitButton', 'stockForm', filteredItems, async function(items, formId) {
     showLoadingSpinner();
 
     const formData = new FormData(document.getElementById(formId));
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const blob = new Blob([finalCsvContent], { type: 'text/csv;charset=utf-8;' });
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = async function(event) {
       const base64data = btoa(event.target.result);
       const fileName = `${getFormattedDateTime()}_นับสต๊อก_บาร์_รายสัปดาห์.csv`;
 
@@ -83,11 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
           document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
         }
-      })
-      .catch(error => {
+      } catch (error) {
         hideLoadingSpinner();
         document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
-      });
+      }
     };
 
     reader.readAsBinaryString(blob);
