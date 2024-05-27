@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
       uploadForm.append('mimeType', 'text/csv');
       uploadForm.append('filename', fileName);
 
-      fetch('https://script.google.com/macros/s/AKfycbyydXu6P0guKLQNgvPOV7BNWwHXLaf-xX_FCYqUr2Us_7Vr1bZ0S2VwfM9-A8imAxC9/exec', {
+      fetch(getUploadURL(), { // Use the function here
         method: 'POST',
         body: uploadForm
       })
