@@ -1,7 +1,7 @@
 export const stockItems = [
 
     // Thai kitchen
- { name: 'test', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
+ // { name: 'test', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'กุ้ง 20-22 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'กุ้ง 28-30 ตัว/กก.', fixedStock: '10 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
     { name: 'กุ้งเสือ 8 ตัว/กก', fixedStock: '2 กก', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'ไทย' },
