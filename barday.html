@@ -18,14 +18,18 @@
                 <table id="stockTable">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>ชื่อ</th>
-                            <th>สต็อกที่กำหนด</th>
-                            <th>นับสินค้าคงคลัง</th>
-                            <th>จำนวนที่ต้องการสั่งซื้อ</th>
-                            <th>จำนวนนับ</th>
-                            <th>ประเภท</th>
-                            <th>ครัว</th>
+                            <th>Code</th>
+                            <th>เบียร์</th>
+                            <th>รับคืน</th>
+                            <th>Total</th>
+                            <th>บาร์ C</th>
+                            <th>สโตร์ C</th>
+                            <th>บ้านSY</th>
+                            <th>บาร์ L</th>
+                            <th>บาร์ M</th>
+                            <th>Z</th>
+                            <th>Office</th>
+                            <th>ลูกค้ายืม</th>
                         </tr>
                     </thead>
                     <tbody id="stockTableBody">
@@ -43,30 +47,39 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <div id="modalBackdrop"></div>
-    <div id="confirmationModal">
-        <h2>Confirmation</h2>
-        <div style="overflow-y: auto; max-height: 60vh;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ชื่อ</th>
-                        <th>สต็อกที่กำหนด</th>
-                        <th>นับสินค้าคงคลัง</th>
-                        <th>จำนวนที่ต้องการสั่งซื้อ</th>
-                        <th>จำนวนนับ</th>
-                    </tr>
-                </thead>
-                <tbody id="confirmationTableBody"></tbody>
-            </table>
+    <div id="modalBackdrop" class="modal-backdrop" style="display: none;"></div>
+    <div id="confirmationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Confirmation</h2>
+            <div style="overflow-y: auto; max-height: 60vh;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>เบียร์</th>
+                            <th>รับคืน</th>
+                            <th>Total</th>
+                            <th>บาร์ C</th>
+                            <th>สโตร์ C</th>
+                            <th>บ้านSY</th>
+                            <th>บาร์ L</th>
+                            <th>บาร์ M</th>
+                            <th>Z</th>
+                            <th>Office</th>
+                            <th>ลูกค้ายืม</th>
+                        </tr>
+                    </thead>
+                    <tbody id="confirmationTableBody"></tbody>
+                </table>
+            </div>
+            <button id="finalSubmitButton">Final Submit</button>
+            <button id="backButton">Back</button>
         </div>
-        <button id="finalSubmitButton">Final Submit</button>
-        <button id="backButton">Back</button>
     </div>
 
     <!-- Loading Spinner -->
-    <div id="loadingSpinner">
+    <div id="loadingSpinner" style="display: none;">
         <div class="spinner"></div>
     </div>
 
