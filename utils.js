@@ -1,5 +1,10 @@
 // utils.js
 
+// Google script for csv genarator+upload to drive https://script.google.com/home/projects/1K2xPCeozqDysOxC-SwCj6cMqkFE3--xqm_ZcFhChWMbNWMdGFi2pl0wZ/edit
+export function getUploadURL() {
+  return 'https://script.google.com/macros/s/AKfycbx_SZ29mQEXXRPfgAk_xTapQ5LRlOL3O9ZNrTb9A0q_XsuecLkC3M2ivelwncqg-DO-/exec';
+}
+
 export function getCurrentDateTime() {
   const now = new Date();
   return now.toLocaleString();
