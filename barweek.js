@@ -64,19 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     reader.onload = function(event) {
       const base64data = btoa(event.target.result);
-      const fileName = `${getFormattedDateTime()}_นับสต๊อกบาร์รายสัปดาห์.csv`;
+      const fileName = `${getFormattedDateTime()}_นับสต๊อก_บาร์_รายสัปดาห์.csv`;
 
       const uploadForm = new FormData();
       uploadForm.append('file', base64data);
       uploadForm.append('mimeType', 'text/csv');
       uploadForm.append('filename', fileName);
 
-      fetch(getUploadURL(), { // Use the function here
-        method: 'POST',
-        body: uploadForm
-      })
-      .then(response => response.json())
-      .then(result => {
+      try {
+        const response = await fetch(getUploadURL(kitchenType), { 
+          method: 'POST',
+          body: uploadForm
+        });
+        const result = await response.json();
         hideLoadingSpinner();
         if (result.url) {
           window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=barweek`;
