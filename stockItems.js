@@ -237,10 +237,89 @@ export const stockItems = [
     { name: 'อาโรมาต', fixedStock: '3 กป', unit: 'กป', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
 
     // Bar day
+    // เบียร์
+    { code: 'เบียร์', name: 'เบียร์.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'เบียร์สดไฮเนเก้น 30 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'เบียร์สด Hoegarden 20 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'เบียร์สด Hoegarden Roee 20 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'เบียร์สด Stella Artois 20 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'เบียร์สด Budweiser 19.5 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: 'S1400', name: 'Corona Extra Beer 355 ml', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '3117', name: 'Chang small', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '2407', name: 'Estrella Damm Inedit', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1448', name: 'Heineken 320 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Heineken 0.0% 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1710', name: 'San Mig Light Small 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1450', name: 'Singha Small 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Thonglor Beer', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1451', name: 'Tiger Small 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    
+    // เหล้า
+    { code: 'เหล้า', name: 'เหล้า', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: 'X1001', name: 'J.W.Black Label (1000 ml)', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1460', name: 'J.W.Black Label (700 ml)', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1489', name: 'Bombay Sapphire Gin 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1461', name: 'Chivas 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '14601', name: 'J.W.Gold Label Reserve 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '6668', name: 'Grey Goose Vodka 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '3102', name: 'Jameson Irish Whiskey 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1462', name: 'Jack Daniel\'s Tennessee Whiskey', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1464', name: 'Jim Beam Kentucky Bourbon Whisky', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '148889', name: 'Jagermeister 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '14888', name: 'Regency 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '14889', name: 'Regency 500 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Regency 350 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1465', name: 'Sangsom 300 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '3101', name: 'J.W. Swing 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    
+    // ไวน์
+    { code: 'ไวน์', name: 'ไวน์', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '2110', name: 'Wolf Blass-Eaglehawk: Chardonnay', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '2111', name: 'Wolf Blass-Eaglehawk: Merlot', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    
+    // เหล้า Malt
+    { code: 'เหล้า Malt', name: 'เหล้า Malt', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1484', name: 'Glenfiddich Special Reserve 18 Year', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Glenfiddich Special Reserve 15 Year', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Glenfiddich Special Reserve 12 Year', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Glenlivet 18 Year 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Glenlivet 15 Year 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Glenlivet 12 Year 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Macallan 15 Year Fine Oak 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Macallan 12 Year Fine Oak 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+   
+    // บาร์รายวัน ทั่วไป
+    { code: 'ทั่วไป', name: 'ทั่วไป', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'กระทิงแดง', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1506', name: 'Coke ขวดแก้ว', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Coke กระป๋อง', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1540', name: 'Coke Zero', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1509', name: 'Ginger Ale', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1482', name: 'Red Bull', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1508', name: 'Soda', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1507', name: 'Sprite ขวดแก้ว', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'Sprite กระป๋อง', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1510', name: 'Tonic Water', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '1519', name: 'Water ขวดแก้ว', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: '', name: 'น้ำแร่ทองหล่อ', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
 
-    { name: 'เทสสัปดาฟ์1', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์รายวัน' },
-    { name: 'เทส 2', fixedStock: '00', unit: '', type: 'บาร์', kitchen: 'บาร์รายวัน' },
+    // บุหรี่
 
+    { code: '', name: 'บุหรี่', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1706', name: 'LM Menthol', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1705', name: 'LM Red', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1708', name: 'Marlboro Black 2', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1701', name: 'Marlboro Red', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1702', name: 'Marlboro Light', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1703', name: 'Marlboro Menthol', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1715', name: 'Marlboro Light 7.1', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1714', name: 'Marlboro Menthol 7.1', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1711', name: 'Marlboro Arctic X', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1704', name: 'Marlboro Purple', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: '1721', name: 'Marlboro Vista Sunset X2', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+
+   
+   
     // Bar Week
 
     { name: 'หลอดยาวพิเศษ', fixedStock: '9', unit: '', type: 'บาร์', kitchen: 'บาร์รายสัปดาห์' },
