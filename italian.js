@@ -9,7 +9,8 @@ import {
   populateConfirmationTable, 
   showModal, 
   hideModal, 
-  handleFinalSubmit 
+  handleFinalSubmit,
+  getUploadURL // Ensure this is correctly imported
 } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
