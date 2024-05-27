@@ -1,3 +1,28 @@
+table th, table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f2f2f2;
+  }
+  
+  input[type="number"] {
+    width: 60px; /* Smaller width for numeric inputs */
+  }
+  
+  td:first-child, th:first-child {
+    width: 80px; /* Adjust width for the code column */
+  }
+  
+  td:nth-child(2), th:nth-child(2) {
+    width: 200px; /* Adjust width for the name column */
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }  
+
 body {
     display: flex;
     justify-content: center;
