@@ -2,7 +2,7 @@
 
 // Google script for csv genarator+upload to drive https://script.google.com/home/projects/1K2xPCeozqDysOxC-SwCj6cMqkFE3--xqm_ZcFhChWMbNWMdGFi2pl0wZ/edit
 export function getUploadURL() {
-  return 'https://script.google.com/macros/s/AKfycbyydXu6P0guKLQNgvPOV7BNWwHXLaf-xX_FCYqUr2Us_7Vr1bZ0S2VwfM9-A8imAxC9/exec/exec';
+  return 'https://script.google.com/macros/s/AKfycbyydXu6P0guKLQNgvPOV7BNWwHXLaf-xX_FCYqUr2Us_7Vr1bZ0S2VwfM9-A8imAxC9/exec';
 }
 
 export function getCurrentDateTime() {
