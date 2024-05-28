@@ -238,7 +238,7 @@ export const stockItems = [
 
     // Bar day
     // เบียร์
-    { code: 'เบียร์', name: 'เบียร์.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+    { code: 'เบียร์', name: 'เบียร์', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' }, 
     { code: '', name: 'เบียร์สดไฮเนเก้น 30 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'เบียร์สด Hoegarden 20 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'เบียร์สด Hoegarden Roee 20 L.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
@@ -253,8 +253,9 @@ export const stockItems = [
     { code: '1450', name: 'Singha Small 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'Thonglor Beer', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '1451', name: 'Tiger Small 330 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
-    
+ 
     // เหล้า
+    
     { code: 'เหล้า', name: 'เหล้า', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: 'X1001', name: 'J.W.Black Label (1000 ml)', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '1460', name: 'J.W.Black Label (700 ml)', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
@@ -271,13 +272,17 @@ export const stockItems = [
     { code: '', name: 'Regency 350 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '1465', name: 'Sangsom 300 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '3101', name: 'J.W. Swing 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+ 
     
     // ไวน์
+
     { code: 'ไวน์', name: 'ไวน์', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '2110', name: 'Wolf Blass-Eaglehawk: Chardonnay', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '2111', name: 'Wolf Blass-Eaglehawk: Merlot', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
+ 
     
     // เหล้า Malt
+
     { code: 'เหล้า Malt', name: 'เหล้า Malt', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '1484', name: 'Glenfiddich Special Reserve 18 Year', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'Glenfiddich Special Reserve 15 Year', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
@@ -287,8 +292,10 @@ export const stockItems = [
     { code: '', name: 'Glenlivet 12 Year 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'Macallan 15 Year Fine Oak 750 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'Macallan 12 Year Fine Oak 700 ml.', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
-   
+  
+    
     // บาร์รายวัน ทั่วไป
+
     { code: 'ทั่วไป', name: 'ทั่วไป', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '', name: 'กระทิงแดง', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
     { code: '1506', name: 'Coke ขวดแก้ว', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บาร์รายวัน' },
