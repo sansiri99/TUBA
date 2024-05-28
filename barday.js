@@ -63,7 +63,7 @@ function createTableRow(item, index) {
   if (isCategoryHeader) {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td colspan="12" style="font-weight: bold;">${item.name}</td>
+    <td colspan="12" style="font-weight: bold; background-color: lightgray;">${item.name}</td>
     `;
     return row;
   } else {
