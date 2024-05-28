@@ -4,7 +4,6 @@ import {
   getFormattedDateTime, 
   populateTable, 
   handleFormSubmission, 
-  filterFilledItems, 
   getUploadURL 
 } from './utils.js';
 
@@ -17,17 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const filteredItems = stockItems.filter(item => item.kitchen === 'บาร์รายวัน');
   populateTable(filteredItems, 'stockTableBody', createTableRow);
 
-  handleFormSubmission('stockForm', filteredItems, filterFilledItems, function(filledItems) {
-    populateConfirmationTable(filledItems, 'confirmationTableBody');
-    showModal('modalBackdrop', 'confirmationModal');
-  });
-
-  document.getElementById('finalSubmitButton').addEventListener('click', function() {
-    handleFinalSubmit(filteredItems, 'stockForm');
-  });
-
-  document.getElementById('backButton').addEventListener('click', function() {
-    hideModal('modalBackdrop', 'confirmationModal');
+  handleFormSubmission('stockForm', filteredItems, function(filledItems) {
+    if (confirm(generateConfirmationMessage(filteredItems))) {
+      handleFinalSubmit(filteredItems, 'stockForm');
+    }
   });
 
   document.getElementById('resetButton').addEventListener('click', function() {
@@ -66,64 +58,51 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function createTableRow(item, index) {
-  const row = document.createElement('tr');
-  row.innerHTML = `
-    <td>${item.code}</td>
-    <td>${item.name}</td>
-    <td><input type="number" name="received_${index}" value="" min="0"></td>
-    <td><input type="number" name="total_${index}" value="" readonly style="font-weight: bold;"></td>
-    <td><input type="number" name="barC_${index}" value="" min="0"></td>
-    <td><input type="number" name="storeC_${index}" value="" min="0"></td>
-    <td><input type="number" name="houseSY_${index}" value="" min="0"></td>
-    <td><input type="number" name="barL_${index}" value="" min="0"></td>
-    <td><input type="number" name="barM_${index}" value="" min="0"></td>
-    <td><input type="number" name="z_${index}" value="" min="0"></td>
-    <td><input type="number" name="office_${index}" value="" min="0"></td>
-    <td><input type="number" name="customerBorrow_${index}" value="" min="0"></td>
-  `;
-  return row;
-}
+  const isCategoryHeader = item.code === item.name; // Check if the row is a category header
 
-function showLoadingSpinner() {
-  document.getElementById('loadingSpinner').style.display = 'block';
-}
-
-function hideLoadingSpinner() {
-  document.getElementById('loadingSpinner').style.display = 'none';
-}
-
-function populateConfirmationTable(items, tableBodyId) {
-  const tableBody = document.getElementById(tableBodyId);
-  tableBody.innerHTML = '';
-
-  items.forEach((item, index) => {
+  if (isCategoryHeader) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td colspan="12" style="font-weight: bold;">${item.name}</td>
+    `;
+    return row;
+  } else {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${item.code}</td>
       <td>${item.name}</td>
-      <td>${item.received}</td>
-      <td>${item.total}</td>
-      <td>${item.barC}</td>
-      <td>${item.storeC}</td>
-      <td>${item.houseSY}</td>
-      <td>${item.barL}</td>
-      <td>${item.barM}</td>
-      <td>${item.z}</td>
-      <td>${item.office}</td>
-      <td>${item.customerBorrow}</td>
+      <td><input type="number" name="received_${index}" value="" min="0"></td>
+      <td><input type="number" name="total_${index}" value="" readonly style="font-weight: bold;"></td>
+      <td><input type="number" name="barC_${index}" value="" min="0"></td>
+      <td><input type="number" name="storeC_${index}" value="" min="0"></td>
+      <td><input type="number" name="houseSY_${index}" value="" min="0"></td>
+      <td><input type="number" name="barL_${index}" value="" min="0"></td>
+      <td><input type="number" name="barM_${index}" value="" min="0"></td>
+      <td><input type="number" name="z_${index}" value="" min="0"></td>
+      <td><input type="number" name="office_${index}" value="" min="0"></td>
+      <td><input type="number" name="customerBorrow_${index}" value="" min="0"></td>
     `;
-    tableBody.appendChild(row);
+    return row;
+  }
+}
+
+function generateConfirmationMessage(items) {
+  let message = 'Please confirm the following details:\n\n';
+  items.forEach(item => {
+    message += `Code: ${item.code}\n`;
+    message += `Name: ${item.name}\n`;
+    message += `Received: ${item.received}\n`;
+    message += `Total: ${item.total}\n`;
+    message += `Bar C: ${item.barC}\n`;
+    message += `Store C: ${item.storeC}\n`;
+    message += `House SY: ${item.houseSY}\n`;
+    message += `Bar L: ${item.barL}\n`;
+    message += `Bar M: ${item.barM}\n`;
+    message += `Z: ${item.z}\n`;
+    message += `Office: ${item.office}\n`;
+    message += `Customer Borrow: ${item.customerBorrow}\n\n`;
   });
-}
-
-function showModal(backdropId, modalId) {
-  document.getElementById(backdropId).style.display = 'block';
-  document.getElementById(modalId).style.display = 'block';
-}
-
-function hideModal(backdropId, modalId) {
-  document.getElementById(backdropId).style.display = 'none';
-  document.getElementById(modalId).style.display = 'none';
+  return message;
 }
 
 async function handleFinalSubmit(items, formId) {
@@ -147,22 +126,26 @@ async function handleFinalSubmit(items, formId) {
     };
   });
 
+  console.log("Filled Items:", filledItems); // Debugging line
+
   const header = `${getCurrentDateTime()}\n`;
   const columnHeaders = 'Code,เบียร์,รับคืน,Total,บาร์ C,สโตร์ C,บ้านSY,บาร์ L,บาร์ M,Z,Office,ลูกค้ายืม\n';
-  const csvContent = header + columnHeaders + filledItems.map(item => [
+  const csvContent = header + columnHeaders + items.map((item, index) => [
     `"${item.code}"`,
     `"${item.name}"`,
-    `"${item.received}"`,
-    `"${item.total}"`,
-    `"${item.barC}"`,
-    `"${item.storeC}"`,
-    `"${item.houseSY}"`,
-    `"${item.barL}"`,
-    `"${item.barM}"`,
-    `"${item.z}"`,
-    `"${item.office}"`,
-    `"${item.customerBorrow}"`
+    `"${formData.get(`received_${index}`) || ''}"`,
+    `"${formData.get(`total_${index}`) || ''}"`,
+    `"${formData.get(`barC_${index}`) || ''}"`,
+    `"${formData.get(`storeC_${index}`) || ''}"`,
+    `"${formData.get(`houseSY_${index}`) || ''}"`,
+    `"${formData.get(`barL_${index}`) || ''}"`,
+    `"${formData.get(`barM_${index}`) || ''}"`,
+    `"${formData.get(`z_${index}`) || ''}"`,
+    `"${formData.get(`office_${index}`) || ''}"`,
+    `"${formData.get(`customerBorrow_${index}`) || ''}"`
   ].join(',')).join('\n');
+
+  console.log("CSV Content:", csvContent); // Debugging line
 
   const bom = '\uFEFF';
   const finalCsvContent = bom + csvContent;
@@ -198,5 +181,12 @@ async function handleFinalSubmit(items, formId) {
   };
 
   reader.readAsBinaryString(blob);
-  hideModal('modalBackdrop', 'confirmationModal');
+}
+
+function showLoadingSpinner() {
+  document.getElementById('loadingSpinner').style.display = 'block';
+}
+
+function hideLoadingSpinner() {
+  document.getElementById('loadingSpinner').style.display = 'none';
 }
