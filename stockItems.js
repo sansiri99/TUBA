@@ -312,7 +312,7 @@ export const stockItems = [
 
     // บุหรี่
 
-    { code: '', name: 'บุหรี่', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
+    { code: 'บุหรี่', name: 'บุหรี่', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
     { code: '1706', name: 'LM Menthol', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
     { code: '1705', name: 'LM Red', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
     { code: '1708', name: 'Marlboro Black 2', received: 0, total: 0, barC: 0, storeC: 0, houseSY: 0, barL: 0, barM: 0, z: 0, office: 0, customerBorrow: 0, kitchen: 'บุหรี่' },
