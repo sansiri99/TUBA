@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return {
         name: item.name,
         fixedStock: item.fixedStock,
+        unit: item.unit,
         inventoryCount: formData.get(`inventoryCount_${index}`) || "",
         numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         counting: formData.get(`counting_${index}`) || "",
@@ -44,10 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
+    const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,หน่วย,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
       `"${item.fixedStock}"`,
+      `"${item.unit}"`,
       `"${item.inventoryCount}"`,
       `"${item.numberToOrder}"`,
       `"${item.counting}"`,
@@ -115,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById('navigateButton').addEventListener('click', function() {
-    window.location.href = 'index.html';
+    if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
+      window.location.href = 'index.html';
+    }
   });
 });
