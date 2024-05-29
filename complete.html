@@ -23,7 +23,8 @@
             const formType = urlParams.get('formType');
             const fileUrl = urlParams.get('fileUrl');
 
-            fetch('https://script.google.com/macros/s/AKfycbwBLtSA_BmQZALcGe8BwICrbgqvD0MnZ0SIT8upNDt9Hh2B5ig6y4ZTalRSdyTlj2iL/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
+            // LINE Nitify API
+            fetch('https://script.google.com/macros/s/AKfycbxNfo48mJ1zYkVc9x7alRQh9cB8JU3o6dYG7A_iKxWsR99-RYpk2hptt8zTAo1xzM_f/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
                 method: 'GET',
                 mode: 'no-cors'
             }).then(response => {
@@ -38,15 +39,31 @@
                 case 'italian':
                     formName = 'ฟอร์มการจัดการสต็อก - ครัวอิตาเลี่ยน';
                     break;
+
                 case 'thai':
                     formName = 'ฟอร์มการจัดการสต็อก - ครัวไทย';
                     break;
+
                 case 'barday':
                     formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายวัน';
                     break;
+
+                case 'barday':
+                    formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายวัน';
+                    break;
+
+                case 'bardaycigarettes':
+                    formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายวัน บุหรี่';
+                    break;
+
+                case 'bardayfruit':
+                    formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายวัน ผลไม้สด';
+                    break;
+
                 case 'barweek':
                     formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายสัปดาห์';
                     break;
+
                 default:
                     formName = 'ฟอร์มการจัดการสต็อก';
             }
