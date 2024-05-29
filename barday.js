@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const total = barC + storeC + houseSY + barL + barM + z + office + customerBorrow;
         document.getElementsByName(`total_${index}`)[0].value = total;
         document.getElementsByName(`total_${index}`)[0].style.fontWeight = 'bold';
+        document.getElementsByName(`total_${index}`)[0].style.backgroundColor = '#f2f2f2';
       }
     });
   }
@@ -63,7 +64,7 @@ function createTableRow(item, index) {
   if (isCategoryHeader) {
     const row = document.createElement('tr');
     row.innerHTML = `
-    <td colspan="12" style="font-weight: bold; background-color: lightgray; text-align: center;">${item.name}</td>
+    <td colspan="12" style="font-weight: bold; background-color: #f2f2f2; text-align: center;">${item.name}</td>
     `;
     return row;
   } else {
@@ -72,7 +73,7 @@ function createTableRow(item, index) {
       <td>${item.code}</td>
       <td>${item.name}</td>
       <td><input type="number" name="received_${index}" value="" min="0"></td>
-      <td><input type="number" name="total_${index}" value="" readonly style="font-weight: bold;"></td>
+      <td><input type="number" name="total_${index}" value="" readonly style="font-weight: bold; background-color: #f2f2f2;"></td>
       <td><input type="number" name="barC_${index}" value="" min="0"></td>
       <td><input type="number" name="storeC_${index}" value="" min="0"></td>
       <td><input type="number" name="houseSY_${index}" value="" min="0"></td>
@@ -87,21 +88,7 @@ function createTableRow(item, index) {
 }
 
 function generateConfirmationMessage(items) {
-  let message = 'Please confirm the following details:\n\n';
-  items.forEach(item => {
-    message += `Code: ${item.code}\n`;
-    message += `Name: ${item.name}\n`;
-    message += `Received: ${item.received}\n`;
-    message += `Total: ${item.total}\n`;
-    message += `Bar C: ${item.barC}\n`;
-    message += `Store C: ${item.storeC}\n`;
-    message += `House SY: ${item.houseSY}\n`;
-    message += `Bar L: ${item.barL}\n`;
-    message += `Bar M: ${item.barM}\n`;
-    message += `Z: ${item.z}\n`;
-    message += `Office: ${item.office}\n`;
-    message += `Customer Borrow: ${item.customerBorrow}\n\n`;
-  });
+  let message = 'กรุญา "ตรวจสอบ" ข้อมูลก่อนส่ง:\n\n';
   return message;
 }
 
