@@ -3,10 +3,10 @@ import {
   getCurrentDateTime, 
   getFormattedDateTime, 
   populateTable, 
-  createTableRow, 
+  createTableRow2, 
   handleFormSubmission, 
   filterFilledItems, 
-  populateConfirmationTable, 
+  populateConfirmationTable2, 
   showModal, 
   hideModal, 
   handleFinalSubmit,
@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const kitchenType = 'บาร์รายสัปดาห์';
 
   const filteredItems = stockItems.filter(item => item.kitchen === kitchenType);
-  populateTable(filteredItems, 'stockTableBody', createTableRow);
+  populateTable(filteredItems, 'stockTableBody', createTableRow2);
 
   handleFormSubmission('stockForm', filteredItems, filterFilledItems, function(filledItems) {
-    populateConfirmationTable(filledItems, 'confirmationTableBody');
+    populateConfirmationTable2(filledItems, 'confirmationTableBody');
+    showModal('modalBackdrop', 'confirmationModal');
   });
 
   handleFinalSubmit('finalSubmitButton', 'stockForm', filteredItems, async function(items, formId) {
@@ -34,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const filledItems = items.map((item, index) => {
       return {
         name: item.name,
-        fixedStock: item.fixedStock,
+        // fixedStock: item.fixedStock,
         unit: item.unit,
-        inventoryCount: formData.get(`inventoryCount_${index}`) || "",
-        numberToOrder: formData.get(`numberToOrder_${index}`) || "",
+        // inventoryCount: formData.get(`inventoryCount_${index}`) || "",
+        // numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         counting: formData.get(`counting_${index}`) || "",
         type: item.type,
         kitchen: item.kitchen
@@ -48,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,หน่วย,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
-      `"${item.fixedStock}"`,
+      // `"${item.fixedStock}"`,
       `"${item.unit}"`,
-      `"${item.inventoryCount}"`,
-      `"${item.numberToOrder}"`,
+      // `"${item.inventoryCount}"`,
+      // `"${item.numberToOrder}"`,
       `"${item.counting}"`,
       `"${item.type}"`,
       `"${item.kitchen}"`
