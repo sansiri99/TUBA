@@ -8,12 +8,14 @@ export function getUploadURL(kitchenType) {
     'ครัวไทย': '1c_BLLONGky1c1ioMP7NKoC34R6crpzLj',
     'ครัวอิตาเลี่ยน': '1KI5uWmOpoWElMRYnarQhwZiv0cH2-qNC',
     'บาร์รายวัน': '1s1aa5EMVyFFKmS0N4i37lkjTJaCE8Sen',
+    'บาร์รายวันบุหรี่':'1dDwfWkn4-joycKcAJbsoXCSbzaY0ks4I',
+    'บาร์รายวันผลไม้สด':'1F2QpxI7TflAkocv7HVKw6rBeXaC_MlGg',
     'บาร์รายสัปดาห์': '1t_6rrr-Js-KE9FVDbuNNZ_GOb2N8oNrW'
   };
 
   // Return the upload URL with the folder ID parameter
   const folderId = folderIds[kitchenType];
-  return `https://script.google.com/macros/s/AKfycbxoDauxJBVP4qaD_SaW_2LfLVifBm0Ix2hjtldq-8AcQxVGRV4-1N6qOj0XPt9Z1k6R/exec?folderId=${folderId}`;
+  return `https://script.google.com/macros/s/AKfycbxG0Llm364WD1HMGl8AeIqDKWctsAdQR9actqhp8g1Fu8wVEO1VdEV2PWttQ4CeyUs7/exec?folderId=${folderId}`;
 }
 
 export function getCurrentDateTime() {
@@ -48,6 +50,7 @@ export function createTableRow(item, index) {
     <td>${index + 1}</td>
     <td>${item.name}</td>
     <td>${item.fixedStock}</td>
+    <td>${item.unit}</td>
     <td><input type="number" name="inventoryCount_${index}" placeholder=""></td>
     <td><input type="number" name="numberToOrder_${index}" placeholder=""></td>
     <td><input type="number" name="counting_${index}" placeholder=""></td>
@@ -56,6 +59,37 @@ export function createTableRow(item, index) {
   `;
   return row;
 }
+
+// barday fruit
+export function createTableRow2(item, index) {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${item.name}</td>
+    <td>${item.unit}</td>
+    <td><input type="number" name="counting_${index}" placeholder=""></td>
+    <td>${item.type}</td>
+    <td>${item.kitchen}</td>
+  `;
+  return row;
+}
+// barday fruit
+export function populateConfirmationTable2(items, tableBodyId) {
+  const tableBody = document.getElementById(tableBodyId);
+  tableBody.innerHTML = '';
+
+  items.forEach((item, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${item.name}</td>
+      <td class="bold-text">${item.counting}</td>
+      <td>${item.unit}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
 
 export function handleFormSubmission(formId, items, filterItems, populateConfirmationTable) {
   document.getElementById(formId).addEventListener('submit', function(event) {
@@ -72,6 +106,7 @@ export function filterFilledItems(items, formData) {
     return {
       name: item.name,
       fixedStock: item.fixedStock,
+      unit: item.unit,
       inventoryCount: formData.get(`inventoryCount_${index}`),
       numberToOrder: formData.get(`numberToOrder_${index}`),
       counting: formData.get(`counting_${index}`),
@@ -91,7 +126,7 @@ export function populateConfirmationTable(items, tableBodyId) {
     row.innerHTML = `
       <td>${index + 1}</td>
       <td>${item.name}</td>
-      <td>${item.fixedStock}</td>
+      <td>${item.unit}</td>
       <td class="bold-text">${item.inventoryCount}</td>
       <td class="bold-text">${item.numberToOrder}</td>
       <td class="bold-text">${item.counting}</td>
@@ -99,6 +134,8 @@ export function populateConfirmationTable(items, tableBodyId) {
     tableBody.appendChild(row);
   });
 }
+
+
 
 export function showModal(backdropId, modalId) {
   document.getElementById(backdropId).style.display = 'block';
