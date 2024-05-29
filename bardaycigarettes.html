@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การจัดการสต็อก - บาร์ รายวัน (บุหรี่)</title>
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+</head>
+<body>
+    <div class="container">
+        <h1 class="kitchen-header">การจัดการสต็อก - บาร์ รายวัน (บุหรี่)</h1>
+        <form id="stockForm">
+            <div>
+                <label for="timestamp">เวลา:</label>
+                <input type="text" id="timestamp" name="timestamp" readonly>
+            </div>
+            <div class="table-container">
+                <table id="stockTable">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>รายการ</th>
+                            <th>รับคืน</th>
+                            <th>Total</th>
+                            <th>บาร์ C</th>
+                            <th>สโตร์ C</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockTableBody"></tbody>
+                </table>
+            </div>
+            <div class="button-container">
+                <button type="submit">ส่งข้อมูล</button>
+                <button type="button" id="resetButton">รีเซ็ต</button>
+                <button type="button" id="navigateButton">ไปหน้าหลัก</button>
+            </div>
+        </form>
+        <div id="loadingMessage" style="display: none;">กรุณารอสักครู่ กำลังประมวลผล...</div>
+        <div id="result"></div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script type="module" src="utils.js?v=1.0.1"></script>
+    <script type="module" src="bardaycigarettes.js?v=1.0.1"></script>
+</body>
+</html>
