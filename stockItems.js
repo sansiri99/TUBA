@@ -120,7 +120,9 @@ export const stockItems = [
     { name: 'ข้าวสารพนักงาน', fixedStock: '', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'ไทย' },
  
     // Italian Kitchen
-
+    { name: 'CHORIZO CASERO PICANTE (CARCHELEJO) / CJ10', fixedStock: ' ', unit: '', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
+    { name: 'SLICE CHORIZO EXTRA (CARCHELEJO) / CJ04', fixedStock: ' ', unit: '', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
+    { name: 'SLICE SALAMI EXTRA (CARCHELEJO) / CJ02', fixedStock: ' ', unit: '', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ไข่กุ้งส้ม', fixedStock: '1', unit: 'แพ็ค', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ซาลามี่ ( เปปเปอร์โรนี )', fixedStock: '1', unit: 'แท่ง', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'ซี่โครงหมู', fixedStock: '', unit: '', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
@@ -150,7 +152,7 @@ export const stockItems = [
     { name: 'หอยแมลงภู่นิวซีแลนด์ (Size L)', fixedStock: '2', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'แอนโชวี่', fixedStock: '0.5', unit: 'ที่', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
     { name: 'แฮม', fixedStock: '2', unit: 'กก', type: 'เนื้อสัตว์', kitchen: 'อิตาเลี่ยน' },
-    { name: 'คอส', fixedStock: '1', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
+    { name: 'สลัดคอส', fixedStock: '1', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
     { name: 'แคนตาลูป ญี่ปุ่น', fixedStock: '1', unit: 'ลูก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
     { name: 'แครอท', fixedStock: '1', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
     { name: 'ไควาเรท', fixedStock: '0.2', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
@@ -186,6 +188,16 @@ export const stockItems = [
     { name: 'เห็ดหอมสด', fixedStock: '1', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
     { name: 'เห็ดหอมแห้ง', fixedStock: '1', unit: 'กก', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
     { name: 'เห็ดออรินจิ', fixedStock: '', unit: '', type: 'ผัก-ผลไม้', kitchen: 'อิตาเลี่ยน' },
+
+    { name: 'Castello Blue Cheese / CA01', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'Castello JALAPENO HAVARTI', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'Castello JALAPENO HAVARTI', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'Grana Padano (Parmesan) 2 กก', fixedStock: '2', unit: 'กก', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'HARD PAMESAN LATTERIA SORESINA/ DZ06', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'Parmigiano Reggiano DOP', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'Pecorino Moliterno', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'San Paquanburie สันผักหวานบุรี', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
+    { name: 'White Cheedar', fixedStock: ' ', unit: '', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },    
     { name: 'ขนมปังแถว', fixedStock: '0.5', unit: 'แถว', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
     { name: 'ขนมปังฝรั่งเศส', fixedStock: '3', unit: 'แถว', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
     { name: 'ข้าวโพดเมล็ด', fixedStock: '24', unit: 'กป', type: 'เครื่องเทศ-ส่วนผสม', kitchen: 'อิตาเลี่ยน' },
