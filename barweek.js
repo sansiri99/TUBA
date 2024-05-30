@@ -46,17 +46,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,หน่วย,จำนวนนับ,ครัว\n';
+    const columnHeaders = 'ชื่อ,จำนวนนับ,หน่วย,ครัว\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
       // `"${item.fixedStock}"`,
-      `"${item.unit}"`,
-      // `"${item.inventoryCount}"`,
-      // `"${item.numberToOrder}"`,
       `"${item.counting}"`,
+      `"${item.unit}"`,
+    //   `"${item.inventoryCount}"`,
+    //   `"${item.numberToOrder}"`,
       // `"${item.type}"`,
       `"${item.kitchen}"`
     ].join(',')).join('\n');
+
 
     // Add BOM character
     const bom = '\uFEFF';
