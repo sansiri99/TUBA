@@ -24,7 +24,7 @@
             const fileUrl = urlParams.get('fileUrl');
 
             // LINE Nitify API
-            fetch('https://script.google.com/macros/s/AKfycbxNfo48mJ1zYkVc9x7alRQh9cB8JU3o6dYG7A_iKxWsR99-RYpk2hptt8zTAo1xzM_f/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
+            fetch('https://script.google.com/macros/s/AKfycbxI_qzRozX-ultbzE_p7C30wgUhcH2hK8wEqyKVoraSBVTsjyToQztN-bRCKES_ICfc/exec?formType=' + formType + '&fileUrl=' + fileUrl, {
                 method: 'GET',
                 mode: 'no-cors'
             }).then(response => {
@@ -36,16 +36,25 @@
             // Set the form name
             let formName = '';
             switch (formType) {
-                case 'italian':
-                    formName = 'ฟอร์มการจัดการสต็อก - ครัวอิตาเลี่ยน';
+                                
+                case 'drystockweek':
+                    formName = 'ฟอร์มการจัดการสต็อก - ของแห้ง สัปดาห์';
+                    break;
+
+                case 'boxstockweek':
+                    formName = 'ฟอร์มการจัดการสต็อก - นับกล่อง สัปดาห์';
+                    break;
+                
+                case 'loststock':
+                    formName = 'ฟอร์มการจัดการสต็อก - สูญเสีย';
                     break;
 
                 case 'thai':
                     formName = 'ฟอร์มการจัดการสต็อก - ครัวไทย';
                     break;
 
-                case 'barday':
-                    formName = 'ฟอร์มการจัดการสต็อก - บาร์ รายวัน';
+                case 'italian':
+                    formName = 'ฟอร์มการจัดการสต็อก - ครัวอิตาเลี่ยน';
                     break;
 
                 case 'barday':
