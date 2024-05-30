@@ -5,6 +5,9 @@
 export function getUploadURL(kitchenType) {
   // Define the folder IDs
   const folderIds = {
+    'ของแห้งรายสัปดาห์':'1m40yPJrErLHKS3feLon7zCftzubl9VJC',
+    'นับกล่องรายสัปดาห์':'1zgwHTJ8us1ZLvnau8Nc7h-hovZy1dI_n',
+    'สูญเสีย':'11mZm4gnidDvkBRj6IwBj-L-VJJ2Rw_BA',
     'ครัวไทย': '1c_BLLONGky1c1ioMP7NKoC34R6crpzLj',
     'ครัวอิตาเลี่ยน': '1KI5uWmOpoWElMRYnarQhwZiv0cH2-qNC',
     'บาร์รายวัน': '1s1aa5EMVyFFKmS0N4i37lkjTJaCE8Sen',
@@ -60,6 +63,25 @@ export function createTableRow(item, index) {
   return row;
 }
 
+export function populateConfirmationTable(items, tableBodyId) {
+  const tableBody = document.getElementById(tableBodyId);
+  tableBody.innerHTML = '';
+
+  items.forEach((item, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${item.name}</td>
+      <td>${item.unit}</td>
+      <td class="bold-text">${item.inventoryCount}</td>
+      <td class="bold-text">${item.numberToOrder}</td>
+      <td class="bold-text">${item.counting}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+
 // barday fruit
 export function createTableRow2(item, index) {
   const row = document.createElement('tr');
@@ -68,8 +90,6 @@ export function createTableRow2(item, index) {
     <td>${item.name}</td>
     <td>${item.unit}</td>
     <td><input type="number" name="counting_${index}" placeholder=""></td>
-    <td>${item.type}</td>
-    <td>${item.kitchen}</td>
   `;
   return row;
 }
@@ -88,6 +108,20 @@ export function populateConfirmationTable2(items, tableBodyId) {
     `;
     tableBody.appendChild(row);
   });
+}
+
+//นับกล่องรายสัปดาห์
+export function createTableRow3(item, index) {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${item.name}</td>
+    <td>${item.unit}</td>
+    <td><input type="number" name="inventoryCount_${index}" placeholder=""></td>
+    <td><input type="number" name="numberToOrder_${index}" placeholder=""></td>
+    <td><input type="number" name="counting_${index}" placeholder=""></td>
+  `;
+  return row;
 }
 
 
@@ -117,23 +151,6 @@ export function filterFilledItems(items, formData) {
   }).filter(item => item.inventoryCount || item.numberToOrder || item.counting);
 }
 
-export function populateConfirmationTable(items, tableBodyId) {
-  const tableBody = document.getElementById(tableBodyId);
-  tableBody.innerHTML = '';
-
-  items.forEach((item, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${index + 1}</td>
-      <td>${item.name}</td>
-      <td>${item.unit}</td>
-      <td class="bold-text">${item.inventoryCount}</td>
-      <td class="bold-text">${item.numberToOrder}</td>
-      <td class="bold-text">${item.counting}</td>
-    `;
-    tableBody.appendChild(row);
-  });
-}
 
 
 
