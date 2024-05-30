@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     reader.onload = async function(event) {
       const base64data = btoa(event.target.result);
-      const fileName = `${getFormattedDateTime()}_นับสต๊อก_ของแห้ง_รายวัน_สัปดาห์.csv`;
+      const fileName = `${getFormattedDateTime()}_นับสต๊อก_ของแห้ง_สัปดาห์.csv`;
 
       const uploadForm = new FormData();
       uploadForm.append('file', base64data);
