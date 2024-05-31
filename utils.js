@@ -54,9 +54,9 @@ export function createTableRow(item, index) {
     <td>${item.name}</td>
     <td>${item.fixedStock}</td>
     <td>${item.unit}</td>
-    <td><input type="number" name="inventoryCount_${index}" placeholder=""></td>
-    <td><input type="number" name="numberToOrder_${index}" placeholder=""></td>
-    <td><input type="number" name="counting_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="inventoryCount_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="numberToOrder_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="counting_${index}" placeholder=""></td>
     <td>${item.type}</td>
     <td>${item.kitchen}</td>
   `;
