@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,สต็อกที่กำหนด,หน่วย,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
+    const columnHeaders = 'ชื่อ,หน่วย,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
-      `"${item.fixedStock}"`,
+      // `"${item.fixedStock}"`,
       `"${item.unit}"`,
       `"${item.inventoryCount}"`,
       `"${item.numberToOrder}"`,
