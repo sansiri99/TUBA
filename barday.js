@@ -116,7 +116,7 @@ async function handleFinalSubmit(items, formId) {
   console.log("Filled Items:", filledItems); // Debugging line
 
   const header = `${getCurrentDateTime()}\n`;
-  const columnHeaders = 'Code,เบียร์,รับคืน,Total,บาร์ C,สโตร์ C,บ้านSY,บาร์ L,บาร์ M,Z,Office,ลูกค้ายืม\n';
+  const columnHeaders = 'Code,รายการ,รับคืน,Total,บาร์ C,สโตร์ C,บ้านSY,บาร์ L,บาร์ M,Z,Office,ลูกค้ายืม\n';
   const csvContent = header + columnHeaders + items.map((item, index) => [
     `"${item.code}"`,
     `"${item.name}"`,
