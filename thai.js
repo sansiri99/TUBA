@@ -45,14 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,หน่วย,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,ประเภท,ครัว\n';
+    const columnHeaders = 'ชื่อ,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,หน่วย,ประเภท,ครัว\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
       // `"${item.fixedStock}"`,
-      `"${item.unit}"`,
       `"${item.inventoryCount}"`,
       `"${item.numberToOrder}"`,
       `"${item.counting}"`,
+      `"${item.unit}"`,
       `"${item.type}"`,
       `"${item.kitchen}"`
     ].join(',')).join('\n');
