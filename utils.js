@@ -89,7 +89,7 @@ export function createTableRow2(item, index) {
     <td>${index + 1}</td>
     <td>${item.name}</td>
     <td>${item.unit}</td>
-    <td><input type="number" name="counting_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="counting_${index}" placeholder=""></td>
   `;
   return row;
 }
@@ -117,9 +117,9 @@ export function createTableRow3(item, index) {
     <td>${index + 1}</td>
     <td>${item.name}</td>
     <td>${item.unit}</td>
-    <td><input type="number" name="inventoryCount_${index}" placeholder=""></td>
-    <td><input type="number" name="numberToOrder_${index}" placeholder=""></td>
-    <td><input type="number" name="counting_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="inventoryCount_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="numberToOrder_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="counting_${index}" placeholder=""></td>
   `;
   return row;
 }
