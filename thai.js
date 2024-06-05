@@ -1,4 +1,4 @@
-import { stockItems } from './stockItems.js';
+import { stockItems } from './stockItems.js';  // Import stockItems
 import { 
   getCurrentDateTime, 
   getFormattedDateTime, 
@@ -10,7 +10,8 @@ import {
   showModal, 
   hideModal, 
   handleFinalSubmit,
-  getUploadURL // Ensure this is correctly imported
+  getUploadURL,
+  sendLineNotify // Import the new function
 } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const pageTitle = document.title;
   const kitchenType = 'ครัวไทย';
 
-  const filteredItems = stockItems.filter(item => item.kitchen === 'ไทย');
+  const filteredItems = stockItems.filter(item => item.kitchen === kitchenType);
   populateTable(filteredItems, 'stockTableBody', createTableRow);
 
   handleFormSubmission('stockForm', filteredItems, filterFilledItems, function(filledItems) {
@@ -34,30 +35,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const filledItems = items.map((item, index) => {
       return {
         name: item.name,
-        fixedStock: item.fixedStock,
         unit: item.unit,
-        inventoryCount: formData.get(`inventoryCount_${index}`) || "",
-        numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         counting: formData.get(`counting_${index}`) || "",
+        numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         type: item.type,
         kitchen: item.kitchen
       };
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,หน่วย,ประเภท,ครัว\n';
+    const columnHeaders = 'ชื่อ,จำนวนนับ,จำนวนสั่ง,หน่วย\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
-      // `"${item.fixedStock}"`,
-      `"${item.inventoryCount}"`,
-      `"${item.numberToOrder}"`,
       `"${item.counting}"`,
+      `"${item.numberToOrder}"`,
       `"${item.unit}"`,
-      `"${item.type}"`,
-      `"${item.kitchen}"`
     ].join(',')).join('\n');
 
-    // Add BOM character
     const bom = '\uFEFF';
     const finalCsvContent = bom + csvContent;
 
@@ -72,59 +66,53 @@ document.addEventListener('DOMContentLoaded', function() {
       uploadForm.append('file', base64data);
       uploadForm.append('mimeType', 'text/csv');
       uploadForm.append('filename', fileName);
-
-      try {
-        const response = await fetch(getUploadURL(kitchenType), { 
-          method: 'POST',
-          body: uploadForm
-        });
-        const result = await response.json();
-        hideLoadingSpinner();
-        if (result.url) {
-          window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=thai`;
-        } else {
-          document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
+      
+        try {
+          const response = await fetch(getUploadURL(kitchenType), { 
+            method: 'POST',
+            body: uploadForm
+          });
+          const result = await response.json();
+          hideLoadingSpinner();
+          if (result.url) {
+            sendLineNotify('thai', result.url);  // Call the new LINE Notify function
+            window.location.href = `testcomplete.html?fileUrl=${encodeURIComponent(result.url)}&formType=thai`;
+          } else {
+            document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
+          }
+        } catch (error) {
+          hideLoadingSpinner();
+          document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
         }
-      } catch (error) {
-        hideLoadingSpinner();
-        document.getElementById('result').innerHTML = `<p>Error uploading file: ${error}</p>`;
+      };
+  
+      reader.readAsBinaryString(blob);
+      hideModal('modalBackdrop', 'confirmationModal');
+    });
+  
+    function showLoadingSpinner() {
+      document.getElementById('loadingSpinner').style.display = 'block';
+    }
+  
+    function hideLoadingSpinner() {
+      document.getElementById('loadingSpinner').style.display = 'none';
+    }
+  
+    document.getElementById('backButton').addEventListener('click', function() {
+      hideModal('modalBackdrop', 'confirmationModal');
+    });
+  
+    document.getElementById('resetButton').addEventListener('click', function() {
+      if (confirm('คุณแน่ใจหรือว่าต้องการรีเซ็ตแบบฟอร์ม?')) {
+        document.getElementById('stockForm').reset();
+        timestampField.value = getCurrentDateTime();
       }
-    };
+    });
 
-    reader.readAsBinaryString(blob);
-    hideModal('modalBackdrop', 'confirmationModal');
+    document.getElementById('homeButton').addEventListener('click', function() {
+      if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
+        window.location.href = 'index.html';
+      }
+    });
   });
-
-  // Show the loading spinner
-  function showLoadingSpinner() {
-    document.getElementById('loadingSpinner').style.display = 'block';
-  }
-
-  // Hide the loading spinner
-  function hideLoadingSpinner() {
-    document.getElementById('loadingSpinner').style.display = 'none';
-  }
-
-  document.getElementById('backButton').addEventListener('click', function() {
-    hideModal('modalBackdrop', 'confirmationModal');
-  });
-
-  document.getElementById('resetButton').addEventListener('click', function() {
-    if (confirm('คุณแน่ใจหรือว่าต้องการรีเซ็ตแบบฟอร์ม?')) {
-      document.getElementById('stockForm').reset();
-      timestampField.value = getCurrentDateTime();
-    }
-  });
-
-  document.getElementById('navigateButton').addEventListener('click', function() {
-    if (confirm('คุณแน่ใจหรือว่าต้องการไปหน้านับสต๊อก ครัวอิตาเลี่ยน?')) {
-      window.location.href = 'italian.html';
-    }
-  });
-
-  document.getElementById('homeButton').addEventListener('click', function() {
-    if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
-      window.location.href = 'index.html';
-    }
-  });
-});
+  
