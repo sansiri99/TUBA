@@ -3,8 +3,10 @@
 // Google script for csv generator+upload to drive
 // https://script.google.com/home/projects/1K2xPCeozqDysOxC-SwCj6cMqkFE3--xqm_ZcFhChWMbNWMdGFi2pl0wZ/edit
 export function getUploadURL(kitchenType) {
-  // Define the folder IDs
   const folderIds = {
+    'testthai': '1q2M3C-wLUxD5x35uqKUuA27-_aTGbleH',
+    'testbarday': '1q2M3C-wLUxD5x35uqKUuA27-_aTGbleH',
+
     'ของแห้งรายสัปดาห์':'1m40yPJrErLHKS3feLon7zCftzubl9VJC',
     'นับกล่องรายสัปดาห์':'1zgwHTJ8us1ZLvnau8Nc7h-hovZy1dI_n',
     'สูญเสีย':'11mZm4gnidDvkBRj6IwBj-L-VJJ2Rw_BA',
@@ -15,8 +17,6 @@ export function getUploadURL(kitchenType) {
     'บาร์รายวันผลไม้สด':'1F2QpxI7TflAkocv7HVKw6rBeXaC_MlGg',
     'บาร์รายสัปดาห์': '1t_6rrr-Js-KE9FVDbuNNZ_GOb2N8oNrW'
   };
-
-  // Return the upload URL with the folder ID parameter
   const folderId = folderIds[kitchenType];
   return `https://script.google.com/macros/s/AKfycbxG0Llm364WD1HMGl8AeIqDKWctsAdQR9actqhp8g1Fu8wVEO1VdEV2PWttQ4CeyUs7/exec?folderId=${folderId}`;
 }
@@ -52,13 +52,9 @@ export function createTableRow(item, index) {
   row.innerHTML = `
     <td>${index + 1}</td>
     <td>${item.name}</td>
-    <td>${item.fixedStock}</td>
     <td>${item.unit}</td>
-    <td><input type="number" step="0.1" name="inventoryCount_${index}" placeholder=""></td>
-    <td><input type="number" step="0.1" name="numberToOrder_${index}" placeholder=""></td>
     <td><input type="number" step="0.1" name="counting_${index}" placeholder=""></td>
-    <td>${item.type}</td>
-    <td>${item.kitchen}</td>
+    <td><input type="number" step="0.1" name="numberToOrder_${index}" placeholder=""></td>
   `;
   return row;
 }
@@ -72,17 +68,17 @@ export function populateConfirmationTable(items, tableBodyId) {
     row.innerHTML = `
       <td>${index + 1}</td>
       <td>${item.name}</td>
-      <td>${item.unit}</td>
-      <td class="bold-text">${item.inventoryCount}</td>
-      <td class="bold-text">${item.numberToOrder}</td>
       <td class="bold-text">${item.counting}</td>
+      <td class="bold-text">${item.numberToOrder}</td>
+      <td>${item.unit}</td>
     `;
     tableBody.appendChild(row);
   });
 }
 
 
-// barday fruit
+// barday fruit + นับกล่องรายสัปดาห์ + barweek
+
 export function createTableRow2(item, index) {
   const row = document.createElement('tr');
   row.innerHTML = `
@@ -90,10 +86,11 @@ export function createTableRow2(item, index) {
     <td>${item.name}</td>
     <td>${item.unit}</td>
     <td><input type="number" step="0.1" name="counting_${index}" placeholder=""></td>
+    <td><input type="number" step="0.1" name="numberToOrder_${index}" placeholder=""></td>
   `;
   return row;
 }
-// barday fruit
+
 export function populateConfirmationTable2(items, tableBodyId) {
   const tableBody = document.getElementById(tableBodyId);
   tableBody.innerHTML = '';
@@ -104,13 +101,16 @@ export function populateConfirmationTable2(items, tableBodyId) {
       <td>${index + 1}</td>
       <td>${item.name}</td>
       <td class="bold-text">${item.counting}</td>
+      <td class="bold-text">${item.numberToOrder}</td>
       <td>${item.unit}</td>
     `;
     tableBody.appendChild(row);
   });
 }
 
-//นับกล่องรายสัปดาห์
+
+//
+
 export function createTableRow3(item, index) {
   const row = document.createElement('tr');
   row.innerHTML = `
@@ -123,6 +123,89 @@ export function createTableRow3(item, index) {
   `;
   return row;
 }
+
+
+// barday 
+
+export function populateConfirmationTable4(items, tableBodyId) {
+  const tableBody = document.getElementById(tableBodyId);
+  tableBody.innerHTML = '';
+
+  items.forEach((item, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${item.name}</td>
+      <td>${item.received}</td>
+      <td>${item.total}</td>
+      <td>${item.barC}</td>
+      <td>${item.storeC}</td>
+      <td>${item.houseSY}</td>
+      <td>${item.barL}</td>
+      <td>${item.barM}</td>
+      <td>${item.z}</td>
+      <td>${item.office}</td>
+      <td>${item.customerBorrow}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+export function filterFilledItemsWithTotal(items, formData) {
+  return items.map((item, index) => {
+    return {
+      name: item.name,
+      received: formData.get(`received_${index}`) || "",
+      total: formData.get(`total_${index}`) || "",
+      barC: formData.get(`barC_${index}`) || "",
+      storeC: formData.get(`storeC_${index}`) || "",
+      houseSY: formData.get(`houseSY_${index}`) || "",
+      barL: formData.get(`barL_${index}`) || "",
+      barM: formData.get(`barM_${index}`) || "",
+      z: formData.get(`z_${index}`) || "",
+      office: formData.get(`office_${index}`) || "",
+      customerBorrow: formData.get(`customerBorrow_${index}`) || ""
+    };
+  }).filter(item => item.received || item.total || item.barC || item.storeC || item.houseSY || item.barL || item.barM || item.z || item.office || item.customerBorrow);
+}
+
+
+// บุหรี่รายวัน
+
+export function populateConfirmationTable5(items, tableBodyId) {
+  const tableBody = document.getElementById(tableBodyId);
+  tableBody.innerHTML = '';
+
+  items.forEach((item) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.code}</td>
+      <td>${item.name}</td>
+      <td>${item.received}</td>
+      <td>${item.total}</td>
+      <td>${item.barC}</td>
+      <td>${item.storeC}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+export function filterFilledItemsWithTotal1(items, formData) {
+  return items.map((item, index) => {
+    return {
+      code: item.code,
+      name: item.name,
+      received: formData.get(`received_${index}`) || "",
+      total: formData.get(`total_${index}`) || "",
+      barC: formData.get(`barC_${index}`) || "",
+      storeC: formData.get(`storeC_${index}`) || ""
+
+    };
+  }).filter(item => item.received || item.total || item.barC || item.storeC );
+}
+
+
+
 
 
 export function handleFormSubmission(formId, items, filterItems, populateConfirmationTable) {
@@ -139,20 +222,15 @@ export function filterFilledItems(items, formData) {
   return items.map((item, index) => {
     return {
       name: item.name,
-      fixedStock: item.fixedStock,
       unit: item.unit,
-      inventoryCount: formData.get(`inventoryCount_${index}`),
-      numberToOrder: formData.get(`numberToOrder_${index}`),
       counting: formData.get(`counting_${index}`),
+      numberToOrder: formData.get(`numberToOrder_${index}`),
       type: item.type,
       kitchen: item.kitchen,
       index: index
     };
   }).filter(item => item.inventoryCount || item.numberToOrder || item.counting);
 }
-
-
-
 
 export function showModal(backdropId, modalId) {
   document.getElementById(backdropId).style.display = 'block';
@@ -167,5 +245,17 @@ export function hideModal(backdropId, modalId) {
 export function handleFinalSubmit(buttonId, formId, items, callback) {
   document.getElementById(buttonId).addEventListener('click', function() {
     callback(items, formId);
+  });
+}
+
+// LINE Nitify API
+export function sendLineNotify(formType, fileUrl) {
+  fetch(`https://script.google.com/macros/s/AKfycbxB8kS6hiV3K1h2wLHfyc8CBP9jw3CtbURkg35DOVNp6DwCDmc9FHQ5alBLU2UYHk8R/exec?formType=${formType}&fileUrl=${fileUrl}`, {
+    method: 'GET',
+    mode: 'no-cors'
+  }).then(response => {
+    console.log('Message sent');
+  }).catch(error => {
+    console.error('Error:', error);
   });
 }
