@@ -35,26 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const filledItems = items.map((item, index) => {
       return {
         name: item.name,
-        fixedStock: item.fixedStock,
         unit: item.unit,
-        inventoryCount: formData.get(`inventoryCount_${index}`) || "",
-        numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         counting: formData.get(`counting_${index}`) || "",
+        numberToOrder: formData.get(`numberToOrder_${index}`) || "",
         type: item.type,
         kitchen: item.kitchen
       };
     });
 
     const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
-    const columnHeaders = 'ชื่อ,นับสินค้าคงคลัง,จำนวนที่ต้องการสั่งซื้อ,จำนวนนับ,หน่วย,ประเภท,ครัว\n';
+    const columnHeaders = 'ชื่อ,จำนวนนับ,จำนวนสั่ง,หน่วย\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
-      `"${item.inventoryCount}"`,
-      `"${item.numberToOrder}"`,
       `"${item.counting}"`,
+      `"${item.numberToOrder}"`,
       `"${item.unit}"`,
-      `"${item.type}"`,
-      `"${item.kitchen}"`
     ].join(',')).join('\n');
 
     const bom = '\uFEFF';
