@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
     showLoadingSpinner();
 
     const formData = new FormData(document.getElementById(formId));
+    const employeeName = document.getElementById('employeeName').value;
+
+    if (!employeeName) {
+        alert('Employee Name is required!');
+        hideLoadingSpinner();
+        return;
+    }
+
     const filledItems = items.map((item, index) => {
       return {
         name: item.name,
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     });
 
-    const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
+    const header = `${kitchenType}, ${getCurrentDateTime()},ผู้กรอกข้อมูล: ${employeeName}\n`;
     const columnHeaders = 'ชื่อ,จำนวนรับ,รวม,Bar C,Store C,House SY,Bar L,Bar M,Z,Office,Customer Borrow\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
@@ -90,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const result = await response.json();
         hideLoadingSpinner();
         if (result.url) {
-          sendLineNotify('barday', result.url);  // Call the new LINE Notify function
-          window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=barday`;
+          sendLineNotify('barday', result.url, employeeName);  // Pass the employee name to LINE Notify function
+          window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=barday&employeeName=${encodeURIComponent(employeeName)}`;
         } else {
           document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
         }
