@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
     showLoadingSpinner();
 
     const formData = new FormData(document.getElementById(formId));
+    const employeeName = document.getElementById('employeeName').value;
+
+    if (!employeeName) {
+        alert('Employee Name is required!');
+        hideLoadingSpinner();
+        return;
+    }
+
     const filledItems = items.map((item, index) => {
       return {
         name: item.name,
@@ -42,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     });
 
-    const header = `${kitchenType}, ${getCurrentDateTime()}\n`;
+    const header = `${kitchenType}, ${getCurrentDateTime()},ผู้กรอกข้อมูล: ${employeeName}\n`;
     const columnHeaders = 'ชื่อ,,จำนวนนับ,จำนวนสั่ง,หน่วย\n';
     const csvContent = header + columnHeaders + filledItems.map(item => [
       `"${item.name}"`,
@@ -75,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
           const result = await response.json();
           hideLoadingSpinner();
           if (result.url) {
-            sendLineNotify('boxstockweek', result.url);  // Call the new LINE Notify function
-            window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=boxstockweek`;
+            sendLineNotify('boxstockweek', result.url, employeeName);  // Pass the employee name to LINE Notify function
+            window.location.href = `complete.html?fileUrl=${encodeURIComponent(result.url)}&formType=boxstockweek&employeeName=${encodeURIComponent(employeeName)}`;
           } else {
             document.getElementById('result').innerHTML = `<p>Error uploading file: ${result.error}</p>`;
           }
@@ -108,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         timestampField.value = getCurrentDateTime();
       }
     });
-
+  
     document.getElementById('homeButton').addEventListener('click', function() {
       if (confirm('คุณแน่ใจหรือว่าต้องการกลับไปหน้าแรก?')) {
         window.location.href = 'index.html';
