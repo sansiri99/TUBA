@@ -248,14 +248,14 @@ export function handleFinalSubmit(buttonId, formId, items, callback) {
   });
 }
 
-// LINE Nitify API
-export function sendLineNotify(formType, fileUrl) {
-  fetch(`https://script.google.com/macros/s/AKfycbxB8kS6hiV3K1h2wLHfyc8CBP9jw3CtbURkg35DOVNp6DwCDmc9FHQ5alBLU2UYHk8R/exec?formType=${formType}&fileUrl=${fileUrl}`, {
-    method: 'GET',
-    mode: 'no-cors'
+// LINE Notify API
+export function sendLineNotify(formType, fileUrl, employeeName) {
+  fetch(`https://script.google.com/macros/s/AKfycbzBYOzo-CJEe74Oti_IIaFiyd2orP540Y_g-iNoVsjkmwNZHoJBSHk92iVNkbS68fHS/exec?formType=${formType}&fileUrl=${fileUrl}&employeeName=${employeeName}`, {
+      method: 'GET',
+      mode: 'no-cors'
   }).then(response => {
-    console.log('Message sent');
+      console.log('Message sent');
   }).catch(error => {
-    console.error('Error:', error);
+      console.error('Error:', error);
   });
 }
